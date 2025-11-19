@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+.banner{
+    background-position: center !important;
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    position: relative;
+    min-height: 65vh;
+}
+.banner::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--dark-bg);
+}
+.banner .content{
+    max-width: 60rem;
+    text-align: center;
+}
+.banner .content h3{
+    font-size: 6rem;
+    color: var(--white);
+    text-align: center;
+}
+.banner .content p{
+    font-size: 1.6rem;
+    color: var(--white);
+    text-align: center;
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.cta-button { 
+    position: fixed; top: 8rem; right: 4rem; 
+    box-shadow: var(--box-shadow); 
+    transition: background 0.3s ease, transform 0.3s ease; 
+    z-index: 999; 
+}
+.service .box-container {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); 
+    gap: 3rem; 
+}
+.service .box-container .box { 
+    background: var(--white); 
+    border-radius: 1.6rem; 
+    box-shadow: var(--box-shadow); 
+    overflow: hidden; 
+    opacity: 0; 
+    transform: 
+    translateY(2rem); 
+    animation: fadeIn 0.8s forwards;
+}
+.service .box-container .box .image{
+    width: 100%;
+    height: 25rem;
+    overflow: hidden;
+}
+.service .box-container .box .image img { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: 
+    transform 0.4s ease; 
+}
+.service .box-container .box .content { 
+    padding: 2rem; 
+    transition: 
+    color 0.3s ease; 
+}
+.service .box-container .box .content h2 { 
+    font-size: 2rem; 
+    margin-bottom: 10px; 
+    color: var(--black); 
+    transition: color 0.3s ease; 
+}
+.service .box-container .box .content p { 
+    font-size: 1.6rem; 
+    color: #555; 
+}
+.service .box-container .box:hover img { 
+    transform: scale(1.5); 
+}
+.service .box-container .box .content:hover h2 { 
+    color: var(--primary-color); 
+}
+
+@keyframes fadeIn { 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+}
+.service .box-container .box:nth-child(1) { animation-delay: .1s; }
+.service .box-container .box:nth-child(2) { animation-delay: .2s; }
+.service .box-container .box:nth-child(3) { animation-delay: .3s; }
+.service .box-container .box:nth-child(4) { animation-delay: .4s; }
+.service .box-container .box:nth-child(5) { animation-delay: .5s; }
+.service .box-container .box:nth-child(6) { animation-delay: .6s; }
+.service .box-container .box:nth-child(7) { animation-delay: .7s; }
+.service .box-container .box:nth-child(8) { animation-delay: .8s; }
+.service .box-container .box:nth-child(9) { animation-delay: .9s; }
+.service .box-container .box:nth-child(10) { animation-delay: 1s; }
+/* stay fitness end */
+ 
+@media(max-width: 768px){
+    .banner .content h3{
+        font-size: 5rem;
+    }
+}
+
+@media(max-width: 480px){
+    .banner .content h3{
+        font-size: 4rem;
+    }
+}
