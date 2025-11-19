@@ -14,7 +14,7 @@ export default function Loja () {
             <Header />
 
             {/*Banner*/}
-            <section className="banner agendar">
+            <section className="banner loja">
                 <div className="content">
                     <h3>Estamos construindo nossa loja</h3>
                     <p>Por favor, tenha paciência.</p>
