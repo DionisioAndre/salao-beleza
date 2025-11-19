@@ -434,6 +434,14 @@ section, header, footer{
 }
 /* mapa end */
 
+/* msg error */
+.error {
+	color: var(--red);
+	font-size: 1.5rem;
+	margin-top: .5rem;
+}
+/* msg error end */
+
 /* erro */
 .erro .content h1{
     font-size: 6rem;
