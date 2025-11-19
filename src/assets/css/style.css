@@ -139,6 +139,25 @@ section, header, footer{
 .header .navbar a:hover{
 	color: var(--black);
 }
+.icons .btn.btn-login,
+.icons .link,
+.icons #menu-btn{
+	margin-left: 2rem;
+}
+
+.icons .btn.btn-login{
+	color: var(--white);
+	background-color: var(--hover);
+}
+.icons .btn.btn-login:hover{
+	color: var(--white);
+	background-color: var(--black);
+}
+.icons .link{
+	font-size: 2.5rem;
+	cursor: pointer;
+	color: var(--white);
+}
 #menu-btn{
 	font-size: 2.5rem;
 	cursor: pointer;
