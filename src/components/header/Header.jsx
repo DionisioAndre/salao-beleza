@@ -22,11 +22,17 @@ export default function Header() {
                 <a href="/#fale-conosco">Fale Conosco</a>
             </nav>
 
-            <div
-                id="menu-btn"
-                className="fas fa-bars"
-                onClick={() => setMenuOpen(true)}
-            ></div>
+            <div className="icons">
+                <a href="/loja" className="link fas fa-store"></a>
+                <a href="/login" className="link fas fa-user"></a>
+                <div
+                    id="menu-btn"
+                    className="fas fa-bars"
+                    onClick={() => setMenuOpen(true)}
+                ></div>
+            </div>
+
+            
         </header>
     );
 }
