@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import { formatPrice } from "../utils/formatPrice";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { contactSchema } from "../validations/contactSchema";
+
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "../assets/css/style.css";
@@ -35,6 +39,18 @@ import "lightgallery/css/lg-thumbnail.css";
 import "lightgallery/css/lg-zoom.css";
 
 export default function Home () {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        resolver: yupResolver(contactSchema),
+        mode: "onChange" // valida em tempo real
+    });
+
+    const onSubmit = (data) => {
+        console.log("Dados enviados:", data);
+    };
     return (
         <>
             <title>Salão Mirashell</title>
