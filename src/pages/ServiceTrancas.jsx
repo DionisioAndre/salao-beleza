@@ -9,6 +9,8 @@ import ServicoTrancas from "../assets/images/service-trancas.jpg";
 export default function ServiceTrancas () {
     return (
         <>
+            <title>Tranças e Penteados | Salão Mirashell</title>
+
             {/*Header*/}
             <Header />
 

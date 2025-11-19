@@ -25,6 +25,8 @@ import GaleriaImg6 from "../assets/images/galeria6.jpg";
 export default function Home () {
     return (
         <>
+            <title>Salão Mirashell</title>
+
             {/*Header*/}
             <Header />
 

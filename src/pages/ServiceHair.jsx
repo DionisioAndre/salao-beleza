@@ -15,6 +15,8 @@ import ServicoDescoloracao from "../assets/images/service-hair-descoloracao.jpg"
 export default function ServiceHair () {
     return (
         <>
+            <title>Cabeleireiro | Salão Mirashell</title>
+
             {/*Header*/}
             <Header />
 

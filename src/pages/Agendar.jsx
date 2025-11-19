@@ -8,6 +8,8 @@ import "../assets/css/agendar.css";
 export default function Agendar () {
     return (
         <>
+            <title>Agendar | Salão Mirashell</title>
+
             {/*Header*/}
             <Header />
 

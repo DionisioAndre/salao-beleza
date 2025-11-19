@@ -9,6 +9,8 @@ import ServicoPeruca from "../assets/images/service-perucas.jpg";
 export default function ServicePerucas () {
     return (
         <>
+            <title>Extensões e Perucas | Salão Mirashell</title>
+            
             {/*Header*/}
             <Header />
 

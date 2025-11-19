@@ -9,6 +9,8 @@ import ServicoEstetica from "../assets/images/service-estetica.jpg";
 export default function ServiceEstetica () {
     return (
         <>
+            <title>Estética | Salão Mirashell</title>
+
             {/*Header*/}
             <Header />
 

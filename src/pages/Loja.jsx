@@ -9,15 +9,15 @@ export default function Loja () {
     return (
         <>
             <title>Loja | Salão Mirashell</title>
-            
+
             {/*Header*/}
             <Header />
 
             {/*Banner*/}
             <section className="banner agendar">
                 <div className="content">
-                    <h3>Agende a Sua Sessão</h3>
-                    <p>Escolha o serviço, selecione a data e garanta o seu atendimento com nossos profissionais.</p>
+                    <h3>Estamos construindo nossa loja</h3>
+                    <p>Por favor, tenha paciência.</p>
                 </div>
             </section>
             
