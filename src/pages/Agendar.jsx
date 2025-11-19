@@ -1,78 +1,115 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "../assets/css/style.css";
 import "../assets/css/services.css";
 import "../assets/css/agendar.css";
 
-export default function Agendar () {
-    return (
-        <>
-            {/*Header*/}
-            <Header />
+export default function Agendar() {
+  const [servicos, setServicos] = useState([]);
+  const [formData, setFormData] = useState({
+    nome: "",
+    telefone: "",
+    servico: "",
+    data: "",
+    hora: "",
+    observacoes: ""
+  });
 
-            {/*Banner*/}
-            <section className="banner agendar">
-                <div className="content">
-                    <h3>Agende a Sua Sessão</h3>
-                    <p>Escolha o serviço, selecione a data e garanta o seu atendimento com nossos profissionais.</p>
-                </div>
-            </section>
+  // Puxar serviços da API
+  useEffect(() => {
+    fetch("http://localhost:8000/api/servicos/")
+      .then(res => res.json())
+      .then(data => setServicos(data))
+      .catch(err => console.error(err));
+  }, []);
 
-            {/*Agendar*/}
-            <section className="visit" id="agendamento">
-                <h1 className="heading">Agende Sua Sessão</h1>
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  }
 
-                <div className="row">
-                    <form>
-                        <h3>Marque o seu atendimento</h3>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:8000/api/agendamentos/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(res => {
+      if(res.ok){
+        alert("Agendamento enviado com sucesso!");
+        setFormData({
+          nome: "",
+          telefone: "",
+          servico: "",
+          data: "",
+          hora: "",
+          observacoes: ""
+        });
+      } else {
+        alert("Erro ao enviar agendamento.");
+      }
+    })
+    .catch(err => console.error(err));
+  }
 
-                        <div className="inputBox">
-                            <input type="text" name="nome" placeholder="Seu nome" required />   
-                        </div>
+  return (
+    <>
+      <Header />
 
-                        <div className="inputBox">
-                            <input type="tel" name="telefone" placeholder="Seu telefone" required />   
-                        </div>
+      <section className="banner agendar">
+        <div className="content">
+          <h3>Agende a Sua Sessão</h3>
+          <p>Escolha o serviço, selecione a data e garanta o seu atendimento com nossos profissionais.</p>
+        </div>
+      </section>
 
-                        <div className="inputBox">
-                            <select name="servico" required>
-                                <option value="">Selecione o serviço</option>
-                                <option value="desfriso">Desfriso</option>
-                                <option value="botox">Botox Capilar</option>
-                                <option value="progressiva">Escova Progressiva</option>
-                                <option value="hidratacao">Hidratação e Reconstrução</option>
-                                <option value="madeixas">Madeixas</option>
-                                <option value="coloracao">Coloração</option>
-                                <option value="descoloracao">Descoloração e Madeixas</option>
-                                <option value="peruca">Aplicação de Peruca</option>
-                                <option value="keratina">Aplicação de Keratina</option>
-                                <option value="fio-a-fio">Aplicação Fio a Fio</option>
-                                <option value="costura">Aplicação de Costura</option>
-                                <option value="tratamento-perucas">Tratamento de Perucas</option>
-                            </select>
-                        </div>
+      <section className="visit" id="agendamento">
+        <h1 className="heading">Agende Sua Sessão</h1>
 
-                        <div className="inputBox">
-                            <input type="date" name="data" required />
-                        </div>
+        <div className="row">
+          <form onSubmit={handleSubmit}>
+            <h3>Marque o seu atendimento</h3>
 
-                        <div className="inputBox">
-                            <input type="time" name="hora" required />
-                        </div>
+            <div className="inputBox">
+              <input type="text" name="nome" placeholder="Seu nome" value={formData.nome} onChange={handleChange} required />   
+            </div>
 
-                        <div className="inputBox">
-                            <textarea name="observacoes" cols="10" rows="20" placeholder="Observações adicionais (opcional)"></textarea>  
-                        </div>
+            <div className="inputBox">
+              <input type="tel" name="telefone" placeholder="Seu telefone" value={formData.telefone} onChange={handleChange} required />   
+            </div>
 
-                        <button type="submit" name="enviar" className="btn">
-                            Confirmar Agendamento
-                        </button>
-                    </form>
-                </div>
-            </section>
-            {/*Footer*/}
-            <Footer />
-        </>
-    )
+            <div className="inputBox">
+              <select name="servico" value={formData.servico} onChange={handleChange} required>
+                <option value="">Selecione o serviço</option>
+                {servicos.map((s) => (
+                  <option key={s.id} value={s.nome}>{s.nome}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="inputBox">
+              <input type="date" name="data" value={formData.data} onChange={handleChange} required />
+            </div>
+
+            <div className="inputBox">
+              <input type="time" name="hora" value={formData.hora} onChange={handleChange} required />
+            </div>
+
+            <div className="inputBox">
+              <textarea name="observacoes" cols="10" rows="5" placeholder="Observações adicionais (opcional)" value={formData.observacoes} onChange={handleChange}></textarea>  
+            </div>
+
+            <button type="submit" className="btn">
+              Confirmar Agendamento
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  );
 }
