@@ -22,6 +22,17 @@ import GaleriaImg4 from "../assets/images/galeria4.jpg";
 import GaleriaImg5 from "../assets/images/galeria5.jpg";
 import GaleriaImg6 from "../assets/images/galeria6.jpg";
 
+import LightGallery from "lightgallery/react";
+
+// Plugins
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
+
+// CSS
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-thumbnail.css";
+import "lightgallery/css/lg-zoom.css";
+
 export default function Home () {
     return (
         <>
@@ -127,32 +138,41 @@ export default function Home () {
             {/*Galeria*/}
             <section className="gallery" id="galeria">
                 <h1 className="heading">Nossa <span>Galeria</span></h1>
-                <div className="gallery-container">
+                <LightGallery
+                    speed={500}
+                    plugins={[lgThumbnail, lgZoom]}
+                    elementClassNames="gallery-container"
+                >
                     <a href={GaleriaImg1} className="box">
                         <img src={GaleriaImg1} alt="Galeria 1" />
                         <div className="icon"><i className="fas fa-plus"></i></div>
                     </a>
+
                     <a href={GaleriaImg2} className="box">
                         <img src={GaleriaImg2} alt="Galeria 2" />
                         <div className="icon"><i className="fas fa-plus"></i></div>
                     </a>
+
                     <a href={GaleriaImg3} className="box">
                         <img src={GaleriaImg3} alt="Galeria 3" />
                         <div className="icon"><i className="fas fa-plus"></i></div>
                     </a>
+
                     <a href={GaleriaImg4} className="box">
                         <img src={GaleriaImg4} alt="Galeria 4" />
                         <div className="icon"><i className="fas fa-plus"></i></div>
                     </a>
+
                     <a href={GaleriaImg5} className="box">
                         <img src={GaleriaImg5} alt="Galeria 5" />
                         <div className="icon"><i className="fas fa-plus"></i></div>
                     </a>
+
                     <a href={GaleriaImg6} className="box">
                         <img src={GaleriaImg6} alt="Galeria 6" />
                         <div className="icon"><i className="fas fa-plus"></i></div>
                     </a>
-                </div>
+                </LightGallery>
             </section>
 
             {/*Agendar*/}
